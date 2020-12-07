@@ -33,6 +33,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(30) NOT NULL,
   `prenom` varchar(30) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
   `password` varchar(300) NOT NULL,
   `sex` enum('Homme','Femme','Autre','') NOT NULL,
   `pays` varchar(30) NOT NULL,
