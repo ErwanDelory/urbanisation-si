@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `nom`, `prenom`, `password`, `sex`, `pays`) VALUES
-(1, 'root', 'root', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2\r\n', 'Autre', 'France');
+INSERT INTO `users` (`id`, `nom`, `prenom`, 'username', 'email', `password`, `sex`, `pays`) VALUES
+(1, 'root', 'root','root' ,'root@root.fr','4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2\r\n', 'Autre', 'France');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
