@@ -11,7 +11,7 @@ async function auth(req, res, next) {
     });
   }
 
-  let query = `SELECT * FROM utilisateur
+  let query = `SELECT * FROM users
   WHERE email = "${req.body.email}" 
   AND password = "${sha256(req.body.password)}"`;
 
