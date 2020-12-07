@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3308
--- Généré le :  lun. 07 déc. 2020 à 15:12
+-- Généré le :  lun. 07 déc. 2020 à 15:43
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.3.12
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `nom`, `prenom`, `username`, `email`, `password`, `sex`, `pays`) VALUES
-(1, 'root', 'root','root' ,'root@root.fr','4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'Autre', 'France');
+(1, 'root', 'root', 'root', 'root@root.fr', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'Autre', 'France');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
