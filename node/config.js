@@ -8,7 +8,7 @@ const config = {
     user: 'root',
     password: 'root',
     port: 8889,
-    database: 'db',
+    database: 'dburbanisation',
     charset: 'utf8',
   },
 };

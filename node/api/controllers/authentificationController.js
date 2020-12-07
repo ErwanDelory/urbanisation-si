@@ -11,9 +11,9 @@ async function auth(req, res, next) {
     });
   }
 
-  let query = `SELECT * FROM ${config.table.utilisateur.tablename}
-  WHERE ${config.table.utilisateur.email} = "${req.body.email}" 
-  AND mdp = "${sha256(req.body.password)}"`;
+  let query = `SELECT * FROM utilisateur
+  WHERE email = "${req.body.email}" 
+  AND password = "${sha256(req.body.password)}"`;
 
   db.query(query, (err, result) => {
     if (err) throw err;
