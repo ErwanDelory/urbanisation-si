@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const mong = require("./mongo");
+const routes = require("./api/routes/routes");
 
 app.use(bodyParser.json());
 
@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 	next();
 });
 
-//app.use("/api", routes);
+app.use("/api", routes);
 
 app.listen(5001, function () {
 	console.log("Serveur up on 5001");

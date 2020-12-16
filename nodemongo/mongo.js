@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Playlist = require("./model/playlist");
+const Playlist = require("./api/model/playlist");
 
 mongoose
 	.connect("mongodb://mongo:27017")

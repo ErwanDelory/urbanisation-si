@@ -1,9 +1,9 @@
 const express = require("express");
+const playlistControllers = require("../controllers/playlistControllers");
 
 const router = express.Router();
 
-//Authentification Controller
-//router.post('/auth', authentificationControllers.auth);
-//router.post('/register', registerController.register);
+router.get("/playlist", playlistControllers.getPlaylistById);
+router.post("/", playlistControllers.createPlaylist);
 
 module.exports = router;
