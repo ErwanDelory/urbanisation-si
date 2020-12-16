@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const jwt = require("./api/jwt");
 const errorHandler = require("./api/controllers/errorHandler");
-const routes = require("./api/routes/route.js");
+const routes = require("./api/routes/routes.js");
 const config = require("./config");
 const HttpError = require("./api/model/http-error");
 
