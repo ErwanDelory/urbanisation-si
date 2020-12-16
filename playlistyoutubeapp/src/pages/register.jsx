@@ -3,11 +3,15 @@ import { useHistory } from 'react-router';
 import { Alert, Button, Container, Form } from 'react-bootstrap';
 
 const Register = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [genre, setGenre] = useState('Male');
   const [lastname, setLastName] = useState('');
   const [firstname, setFirstName] = useState('');
-  const [role, setRole] = useState('Enseignant');
+  const [email, setEmail] = useState('');
+  const [age, setAge] = useState('');
+  const [pays, setPays] = useState('');
+  const [job, setJob] = useState('');
+  const [password, setPassword] = useState('');
+
   const [message, setMessage] = useState('');
   const [stateError, setStateError] = useState(false);
   const [stateSuccess, setStateSucces] = useState(false);
@@ -33,9 +37,24 @@ const Register = () => {
     setFirstName(value);
   };
 
-  const handleInputRoleChange = (event) => {
+  const handleInputGenreChange = (event) => {
     const { value } = event.target;
-    setRole(value);
+    setGenre(value);
+  };
+
+  const handleInputAgeChange = (event) => {
+    const { value } = event.target;
+    setAge(value);
+  };
+
+  const handleInputPaysChange = (event) => {
+    const { value } = event.target;
+    setPays(value);
+  };
+
+  const handleInputJobChange = (event) => {
+    const { value } = event.target;
+    setJob(value);
   };
 
   const redirect = () => {
@@ -50,7 +69,16 @@ const Register = () => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password, lastname, firstname, role }),
+      body: JSON.stringify({
+        genre: genre,
+        nom: lastname,
+        prenom: firstname,
+        email: email,
+        age: age,
+        pays: pays,
+        job: job,
+        password: password,
+      }),
     }).then((res) => {
       if (!email || !password || !lastname || !firstname) {
         setMessage('Information incorrecte.');
@@ -71,6 +99,18 @@ const Register = () => {
       <br />
       <Container>
         <Form onSubmit={onSubmit}>
+          <Form.Group controlId="genre">
+            <Form.Label>Rôle</Form.Label>
+            <Form.Control
+              as="select"
+              name="genre"
+              value={genre}
+              onChange={handleInputGenreChange}
+            >
+              <option>Male</option>
+              <option>Female</option>
+            </Form.Control>
+          </Form.Group>
           <Form.Group controlId="email">
             <Form.Label>Mail</Form.Label>
             <Form.Control
@@ -112,18 +152,35 @@ const Register = () => {
               onChange={handleInputFirstNameChange}
             />
           </Form.Group>
-          <Form.Group controlId="role">
-            <Form.Label>Rôle</Form.Label>
+          <Form.Group controlId="firstname">
+            <Form.Label>Âge</Form.Label>
             <Form.Control
-              as="select"
-              name="role"
-              value={role}
-              onChange={handleInputRoleChange}
-            >
-              <option>Enseignant</option>
-              <option>Etudiant</option>
-              <option>Tuteur</option>
-            </Form.Control>
+              type="text"
+              name="age"
+              placeholder="Saisir votre âge"
+              value={age}
+              onChange={handleInputAgeChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="firstname">
+            <Form.Label>Pays</Form.Label>
+            <Form.Control
+              type="text"
+              name="pays"
+              placeholder="Saisir votre pays"
+              value={pays}
+              onChange={handleInputPaysChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="firstname">
+            <Form.Label>Job</Form.Label>
+            <Form.Control
+              type="text"
+              name="job"
+              placeholder="Saisir votre job"
+              value={job}
+              onChange={handleInputJobChange}
+            />
           </Form.Group>
           <Button variant="primary" type="submit">
             S'inscire
