@@ -42,19 +42,33 @@ class NavbarLogin extends Component {
 }
 
 const NavbarNav = () => {
+  const reset = () => {
+    sessionStorage.removeItem('id');
+  };
+
   return (
     <Nav className="mr-auto">
-      <Nav.Link href="/">Accueil</Nav.Link>
-      <Nav.Link href="/profile">Compte</Nav.Link>
+      <Nav.Link href="/" onClick={reset}>
+        Accueil
+      </Nav.Link>
+      <Nav.Link href="/profile" onClick={reset}>
+        Compte
+      </Nav.Link>
     </Nav>
   );
 };
 
 const NavbarYoutube = ({ isConnected }) => {
+  const reset = () => {
+    sessionStorage.removeItem('id');
+  };
+
   return (
     <nav>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/">YouTube Like</Navbar.Brand>
+        <Navbar.Brand href="/" onClick={reset}>
+          YouTube Like
+        </Navbar.Brand>
         {!isConnected ? <p></p> : <NavbarNav />}
         {!isConnected ? <NavbarLogout /> : <NavbarLogin />}
       </Navbar>

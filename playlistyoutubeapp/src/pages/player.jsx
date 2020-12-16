@@ -9,9 +9,9 @@ const Player = () => {
         title="video"
         width="720"
         height="480"
-        src="https://www.youtube.com/embed/9sWEecNUW-o?autoplay=1"
+        src={sessionStorage.getItem('id')}
         frameborder="0"
-        allow="autoplay; encrypted-media"
+        allow="encrypted-media"
         allowfullscreen
       ></iframe>
       <br />
