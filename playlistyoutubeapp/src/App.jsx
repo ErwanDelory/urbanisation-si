@@ -8,6 +8,7 @@ import Home from './pages/home';
 import NavbarYoutube from './components/navbar';
 import { AuthContext } from './context/auth';
 import Profile from './pages/profile';
+import Player from './pages/player';
 
 const App = () => {
   const existingToken = sessionStorage.getItem('token');
@@ -25,6 +26,7 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <PrivateRoute exact path="/profile" component={Profile} />
+          <PrivateRoute exact path="/player" component={Player} />
         </Switch>
       </Router>
     </AuthContext.Provider>

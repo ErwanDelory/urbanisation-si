@@ -100,7 +100,7 @@ const Register = () => {
       <Container>
         <Form onSubmit={onSubmit}>
           <Form.Group controlId="genre">
-            <Form.Label>Rôle</Form.Label>
+            <Form.Label>Sexe</Form.Label>
             <Form.Control
               as="select"
               name="genre"
