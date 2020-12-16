@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Playlist = require("./api/model/playlist");
 
 mongoose
-	.connect("mongodb://mongo:27017")
+	.connect("mongodb://mongo:27017/dbyoutube")
 	.then(() => {
 		console.log("Connected Mongodb");
 	})
