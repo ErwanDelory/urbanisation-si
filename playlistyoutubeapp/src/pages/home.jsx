@@ -1,36 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Container } from 'react-bootstrap';
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      resData: '',
-      token: sessionStorage.getItem('token'),
-      name: '',
-    };
-  }
-
-  componentDidMount() {
-    /*fetch('http://localhost:5000/api/test', {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.state.token,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.data[4]);
-        this.setState({ name: data.data[4].nom });
-      });*/
-  }
-
-  render() {
-    return (
-      <div>
-        <p>Home page</p>
-      </div>
-    );
-  }
-}
+const Home = () => {
+  return (
+    <div>
+      <Container>
+        <br />
+        <h4>Afficher le top des playlists</h4>
+        <h4>Rechercher une video</h4>
+        <h4>Ajouter la vidéo à la playlist</h4>
+        <p>
+          iframe pour lire la video youtube avec bouton pour ajouter à la
+          playlist
+        </p>
+      </Container>
+    </div>
+  );
+};
+export default Home;

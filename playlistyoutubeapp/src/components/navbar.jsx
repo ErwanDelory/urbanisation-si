@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AuthenticationService from '../services/authentication-service';
-import Navbar from 'react-bootstrap/Navbar';
+import { Nav, Navbar } from 'react-bootstrap/';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -27,7 +27,7 @@ class NavbarLogin extends Component {
   render() {
     return (
       <Navbar.Collapse className="justify-content-end">
-        <Navbar.Text style={{ color: 'black' }}>
+        <Navbar.Text style={{ color: 'white' }}>
           {this.state.nom} {this.state.prenom}{' '}
         </Navbar.Text>
         <Navbar.Text onClick={this.logout}>
@@ -41,11 +41,21 @@ class NavbarLogin extends Component {
   }
 }
 
+const NavbarNav = () => {
+  return (
+    <Nav className="mr-auto">
+      <Nav.Link href="/">Accueil</Nav.Link>
+      <Nav.Link href="/profile">Compte</Nav.Link>
+    </Nav>
+  );
+};
+
 const NavbarYoutube = ({ isConnected }) => {
   return (
     <nav>
-      <Navbar bg="light" variant="light">
-        <Navbar.Brand href="/">YouTube</Navbar.Brand>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="/">YouTube Like</Navbar.Brand>
+        {!isConnected ? <p></p> : <NavbarNav />}
         {!isConnected ? <NavbarLogout /> : <NavbarLogin />}
       </Navbar>
     </nav>
