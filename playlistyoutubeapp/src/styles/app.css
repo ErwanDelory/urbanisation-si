@@ -1,0 +1,7 @@
+body:not(nav) {
+  background-color: #EDF5E1;
+}
+
+* {
+  text-align: center;
+}
