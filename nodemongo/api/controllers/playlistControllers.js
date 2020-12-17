@@ -13,6 +13,11 @@ const playlist = require("../model/playlist");
         },
     });
 */
+
+//Like Dislike
+async function likePlaylist(req, res, next) {}
+async function dislikePlaylist(req, res, next) {}
+
 //Video
 async function addVideoPlaylist(req, res, next) {
 	let playlist;
@@ -137,6 +142,9 @@ async function createPlaylist(req, res, next) {
 	}
 	res.status(201).json({ playlist: createdPlaylist });
 }
+
+exports.dislikePlaylist = dislikePlaylist;
+exports.likePlaylist = likePlaylist;
 
 exports.addVideoPlaylist = addVideoPlaylist;
 exports.rmVideoPlaylist = rmVideoPlaylist;

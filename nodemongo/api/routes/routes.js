@@ -5,8 +5,8 @@ const router = express.Router();
 
 // *** Playlist Controllers *** \\\
 // Video
-router.patch("/playlist/add/:pid", playlistControllers.addVideoPlaylist);
-router.patch("/playlist/remove/:pid", playlistControllers.rmVideoPlaylist);
+router.put("/playlist/add/:pid", playlistControllers.addVideoPlaylist);
+router.delete("/playlist/remove/:pid", playlistControllers.rmVideoPlaylist);
 //Playliste
 router.delete("/playlist/delete/:pid", playlistControllers.deletePlaylist);
 router.get("/playlist/find/:pid", playlistControllers.getPlaylistById);
