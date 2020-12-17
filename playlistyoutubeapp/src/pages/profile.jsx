@@ -45,6 +45,7 @@ const Profile = () => {
         <Button variant="warning" href="/newplaylist">
           Ajouter une nouvelle playlist
         </Button>
+        <br />
       </Container>
     </div>
   );
