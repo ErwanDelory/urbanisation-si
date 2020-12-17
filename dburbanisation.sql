@@ -1,32 +1,39 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Dec 16, 2020 at 09:12 AM
--- Server version: 5.7.26
--- PHP Version: 7.4.2
+-- Hôte : db
+-- Généré le : jeu. 17 déc. 2020 à 20:02
+-- Version du serveur :  8.0.22
+-- Version de PHP : 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Database: `dburbanisation`
+-- Base de données : `dburbanisation`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `genre` varchar(255) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `age` int(255) NOT NULL,
+  `age` int NOT NULL,
   `pays` varchar(255) NOT NULL,
   `job` varchar(300) NOT NULL,
   `password` varchar(300) NOT NULL,
@@ -34,7 +41,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `genre`, `nom`, `prenom`, `email`, `age`, `pays`, `job`, `password`, `type`) VALUES
@@ -1586,7 +1593,6 @@ INSERT INTO `users` (`id`, `genre`, `nom`, `prenom`, `email`, `age`, `pays`, `jo
 (1567, 'Female', 'Schmitt', 'Moises', 'Alena_Charpentier@hotmail.fr', 78, 'Solomon Islands', 'Stagiaire', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (1568, 'Female', 'Martin', 'Durward', 'Sonya72@yahoo.fr', 52, 'Albania', 'Ingenieur', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (1569, 'Male', 'Caron', 'Julian', 'Manuela.Paul@hotmail.fr', 18, 'Guinea-Bissau', 'Agent', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
-(1570, 'Female', 'Perrin', 'Kayley', 'Mara92@yahoo.fr', 68, 'Benin', 'Consultant', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (1571, 'Male', 'Girard', 'Micaela', 'Fannie_Brunet@yahoo.fr', 49, 'Liberia', 'Executif', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (1572, 'Male', 'Masson', 'Hipolito', 'Mitchel35@yahoo.fr', 54, 'Portugal', 'Producteur', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (1573, 'Female', 'Dupont', 'Bonita', 'Vicente_Guyot@gmail.com', 77, 'Algeria', 'Stagiaire', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
@@ -1803,9 +1809,9 @@ INSERT INTO `users` (`id`, `genre`, `nom`, `prenom`, `email`, `age`, `pays`, `jo
 (1786, 'Female', 'Barre', 'Sanford', 'Dorris.Gaillard@hotmail.fr', 64, 'Paraguay', 'Architecte', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (1787, 'Female', 'Brun', 'Precious', 'Albert.Marie@hotmail.fr', 26, 'Bangladesh', 'Producteur', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (1788, 'Male', 'Leclercq', 'Lucious', 'Brando_Schneider@yahoo.fr', 69, 'Pitcairn Islands', 'Stagiaire', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
-(1789, 'Male', 'Berger', 'Devyn', 'Missouri54@gmail.com', 61, 'Argentina', 'Agent', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users');
+(1789, 'Male', 'Berger', 'Devyn', 'Missouri54@gmail.com', 61, 'Argentina', 'Agent', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
+(1790, 'Female', 'Girard', 'Jerod', 'Wanda_Leroy60@hotmail.fr', 68, 'Puerto Rico', 'Superviseur', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users');
 INSERT INTO `users` (`id`, `genre`, `nom`, `prenom`, `email`, `age`, `pays`, `job`, `password`, `type`) VALUES
-(1790, 'Female', 'Girard', 'Jerod', 'Wanda_Leroy60@hotmail.fr', 68, 'Puerto Rico', 'Superviseur', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (1791, 'Female', 'Roger', 'Marielle', 'Krystal.Rey@yahoo.fr', 58, 'Greenland', 'Analyste', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (1792, 'Female', 'Adam', 'Jose', 'Dino_Berger94@gmail.com', 39, 'Paraguay', 'Ingenieur', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (1793, 'Male', 'Gonzalez', 'Remington', 'Gisselle59@gmail.com', 76, 'Singapore', 'Analyste', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
@@ -2096,9 +2102,9 @@ INSERT INTO `users` (`id`, `genre`, `nom`, `prenom`, `email`, `age`, `pays`, `jo
 (2083, 'Female', 'Roche', 'Hunter', 'Irma40@hotmail.fr', 49, 'Guernsey', 'Consultant', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (2084, 'Female', 'Lemoine', 'Darius', 'Paris28@hotmail.fr', 22, 'Thailand', 'Administrateur', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (2085, 'Male', 'Rolland', 'Myrna', 'Gus.Boyer@yahoo.fr', 27, 'Costa Rica', 'Consultant', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
-(2086, 'Male', 'Aubry', 'Kaden', 'Americo43@yahoo.fr', 32, 'Saint Lucia', 'Architecte', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users');
+(2086, 'Male', 'Aubry', 'Kaden', 'Americo43@yahoo.fr', 32, 'Saint Lucia', 'Architecte', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
+(2087, 'Male', 'Menard', 'Mariane', 'Horace37@yahoo.fr', 46, 'Philippines', 'Executif', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users');
 INSERT INTO `users` (`id`, `genre`, `nom`, `prenom`, `email`, `age`, `pays`, `job`, `password`, `type`) VALUES
-(2087, 'Male', 'Menard', 'Mariane', 'Horace37@yahoo.fr', 46, 'Philippines', 'Executif', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (2088, 'Male', 'Leclerc', 'Jaycee', 'Dillan_Vidal@hotmail.fr', 54, 'Singapore', 'Executif', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (2089, 'Male', 'Charpentier', 'Dylan', 'Burnice.Riviere@hotmail.fr', 42, 'Colombia', 'Stagiaire', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (2090, 'Male', 'Leroux', 'Carissa', 'Isac_Sanchez@hotmail.fr', 45, 'Botswana', 'Manager', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
@@ -4801,7 +4807,6 @@ INSERT INTO `users` (`id`, `genre`, `nom`, `prenom`, `email`, `age`, `pays`, `jo
 (4802, 'Female', 'Laurent', 'Korbin', 'Dana67@yahoo.fr', 41, 'Ecuador', 'Consultant', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (4803, 'Male', 'Vidal', 'Eliezer', 'Austen_Girard@hotmail.fr', 43, 'Japan', 'Specialiste', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (4804, 'Male', 'Colin', 'Monique', 'Ryder.Deschamps@gmail.com', 33, 'Liechtenstein', 'Designer', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
-(4805, 'Female', 'Pons', 'Derek', 'Lucienne_Hubert@hotmail.fr', 31, 'Greenland', 'Designer', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (4806, 'Male', 'Laurent', 'Lea', 'Daisy.Dupuis28@hotmail.fr', 78, 'Malawi', 'Directeur', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (4807, 'Male', 'Dufour', 'Rebekah', 'Dangelo_Roy@gmail.com', 71, 'Afghanistan', 'Assistant', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (4808, 'Female', 'Colin', 'Sophie', 'Alexandrea86@gmail.com', 62, 'Equatorial Guinea', 'Specialiste', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
@@ -4992,24 +4997,31 @@ INSERT INTO `users` (`id`, `genre`, `nom`, `prenom`, `email`, `age`, `pays`, `jo
 (4997, 'Female', 'Fabre', 'Avery', 'Chet1@hotmail.fr', 37, 'Brunei Darussalam', 'Superviseur', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (4998, 'Female', 'Leclercq', 'Isabella', 'Warren_Morin@yahoo.fr', 52, 'Hong Kong', 'Assistant', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (4999, 'Female', 'Menard', 'Amani', 'Alda_Meunier@gmail.com', 24, 'Argentina', 'Technicien', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
-(5000, 'Female', 'Charpentier', 'Libby', 'Myrtle_Menard@gmail.com', 48, 'Timor-Leste', 'Executif', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users');
+(5000, 'Female', 'Charpentier', 'Libby', 'Myrtle_Menard@gmail.com', 48, 'Timor-Leste', 'Executif', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
+(5001, 'Male', 'root', 'root', 'root@root.fr', 15, 'root', 'root', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `users`
+-- Index pour la table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5001;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5014;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
