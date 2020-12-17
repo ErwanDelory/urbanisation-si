@@ -24,7 +24,9 @@ const Profile = () => {
           </Card.Body>
         </Card>
         <br />
-        <Button variant="warning">Ajouter une nouvelle playlist</Button>
+        <Button variant="warning" href="/newplaylist">
+          Ajouter une nouvelle playlist
+        </Button>
       </Container>
     </div>
   );
