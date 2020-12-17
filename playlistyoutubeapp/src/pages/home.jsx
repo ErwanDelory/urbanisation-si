@@ -5,78 +5,7 @@ import ReactPlayer from 'react-player';
 
 const Home = () => {
   const [search, setSearch] = useState('');
-  const [data, setData] = useState([
-    {
-      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
-      titre: 'React JS Crash Course',
-      artiste: 'Traversy Media',
-      description:
-        'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
-    },
-    {
-      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
-      titre: 'React JS Crash Course',
-      artiste: 'Traversy Media',
-      description:
-        'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
-    },
-    {
-      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
-      titre: 'React JS Crash Course',
-      artiste: 'Traversy Media',
-      description:
-        'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
-    },
-    {
-      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
-      titre: 'React JS Crash Course',
-      artiste: 'Traversy Media',
-      description:
-        'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
-    },
-    {
-      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
-      titre: 'React JS Crash Course',
-      artiste: 'Traversy Media',
-      description:
-        'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
-    },
-    {
-      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
-      titre: 'React JS Crash Course',
-      artiste: 'Traversy Media',
-      description:
-        'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
-    },
-    {
-      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
-      titre: 'React JS Crash Course',
-      artiste: 'Traversy Media',
-      description:
-        'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
-    },
-    {
-      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
-      titre: 'React JS Crash Course',
-      artiste: 'Traversy Media',
-      description:
-        'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
-    },
-    {
-      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
-      titre: 'React JS Crash Course',
-      artiste: 'Traversy Media',
-      description:
-        'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
-    },
-    {
-      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
-      titre: 'React JS Crash Course',
-      artiste: 'Traversy Media',
-      description:
-        'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
-    },
-  ]);
+  const [data, setData] = useState([]);
   const history = useHistory();
 
   const handleInputSearchChange = (event) => {
