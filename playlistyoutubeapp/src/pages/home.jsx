@@ -1,75 +1,76 @@
 import React, { useState } from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import { useHistory } from 'react-router';
+import ReactPlayer from 'react-player';
 
 const Home = () => {
   const [search, setSearch] = useState('');
   const [data, setData] = useState([
     {
-      id: 'https://www.youtube.com/embed/sBws8MSXN7A?autoplay=0',
+      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
       titre: 'React JS Crash Course',
       artiste: 'Traversy Media',
       description:
         'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
     },
     {
-      id: 'https://www.youtube.com/embed/sBws8MSXN7A?autoplay=0',
+      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
       titre: 'React JS Crash Course',
       artiste: 'Traversy Media',
       description:
         'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
     },
     {
-      id: 'https://www.youtube.com/embed/sBws8MSXN7A?autoplay=0',
+      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
       titre: 'React JS Crash Course',
       artiste: 'Traversy Media',
       description:
         'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
     },
     {
-      id: 'https://www.youtube.com/embed/sBws8MSXN7A?autoplay=0',
+      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
       titre: 'React JS Crash Course',
       artiste: 'Traversy Media',
       description:
         'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
     },
     {
-      id: 'https://www.youtube.com/embed/sBws8MSXN7A?autoplay=0',
+      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
       titre: 'React JS Crash Course',
       artiste: 'Traversy Media',
       description:
         'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
     },
     {
-      id: 'https://www.youtube.com/embed/sBws8MSXN7A?autoplay=0',
+      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
       titre: 'React JS Crash Course',
       artiste: 'Traversy Media',
       description:
         'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
     },
     {
-      id: 'https://www.youtube.com/embed/sBws8MSXN7A?autoplay=0',
+      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
       titre: 'React JS Crash Course',
       artiste: 'Traversy Media',
       description:
         'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
     },
     {
-      id: 'https://www.youtube.com/embed/sBws8MSXN7A?autoplay=0',
+      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
       titre: 'React JS Crash Course',
       artiste: 'Traversy Media',
       description:
         'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
     },
     {
-      id: 'https://www.youtube.com/embed/sBws8MSXN7A?autoplay=0',
+      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
       titre: 'React JS Crash Course',
       artiste: 'Traversy Media',
       description:
         'In this crash course you will learn what React JS is and the fundamentals such as components, state, props, JSX, events, etc. Modern React Front To Back - 13.5 ...',
     },
     {
-      id: 'https://www.youtube.com/embed/sBws8MSXN7A?autoplay=0',
+      id: 'https://www.youtube.com/watch?v=sBws8MSXN7A',
       titre: 'React JS Crash Course',
       artiste: 'Traversy Media',
       description:
@@ -86,7 +87,7 @@ const Home = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${search}&key=AIzaSyC4P1dArLxP3TUvS_W0P0QISO-QfT4SsZ8&maxResults=10`,
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${search}&key=AIzaSyC4P1dArLxP3TUvS_W0P0QISO-QfT4SsZ8&maxResults=10&type=video`,
       {
         method: 'GET',
         headers: {
@@ -100,7 +101,7 @@ const Home = () => {
         let x = [];
         for (let i = 0; i < res.items.length; i++) {
           x[i] = {
-            id: `https://www.youtube.com/embed/${res.items[i].id.videoId}?autoplay=0`,
+            id: `https://www.youtube.com/watch?v=${res.items[i].id.videoId}`,
             titre: res.items[i].snippet.title,
             artiste: res.items[i].snippet.channelTitle,
             description: res.items[i].snippet.description,
@@ -112,8 +113,11 @@ const Home = () => {
       });
   };
 
-  const openMedia = (id) => {
-    sessionStorage.setItem('id', id);
+  const openMedia = (data) => {
+    sessionStorage.setItem('id', data.id);
+    sessionStorage.setItem('titre', data.titre);
+    sessionStorage.setItem('artiste', data.artiste);
+    sessionStorage.setItem('description', data.description);
     history.push('/player');
   };
 
@@ -143,21 +147,13 @@ const Home = () => {
           <div>
             <Card>
               <Card.Body>
-                <iframe
-                  title="video"
-                  width="288"
-                  height="192"
-                  src={data.id}
-                  frameborder="0"
-                  allow="encrypted-media"
-                  allowfullscreen
-                ></iframe>
+                <ReactPlayer className="player" url={data.id} />
                 <Card.Title>{data.titre}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
                   {data.artiste}
                 </Card.Subtitle>
                 <Card.Text>{data.description}</Card.Text>
-                <Card.Link onClick={() => openMedia(data.id)}>
+                <Card.Link onClick={() => openMedia(data)}>
                   Ouvrir dans l'onglet
                 </Card.Link>
               </Card.Body>

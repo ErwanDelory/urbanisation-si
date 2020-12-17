@@ -5,3 +5,7 @@ body:not(nav) {
 * {
   text-align: center;
 }
+
+.player {
+  margin: 0 auto;
+}

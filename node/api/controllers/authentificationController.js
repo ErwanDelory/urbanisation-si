@@ -33,7 +33,7 @@ async function auth(req, res, next) {
         token: token,
         nom: result[0].nom,
         prenom: result[0].prenom,
-        role: result[0].role,
+        id: result[0].id,
       });
     } else {
       return res.status(403).json({
