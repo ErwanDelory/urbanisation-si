@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import { Button, Card, Container } from 'react-bootstrap';
 import img from './../img/img1.jpg';
 
 const Profile = () => {
   const [playlist, setPlaylist] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     fetch(
@@ -22,10 +24,13 @@ const Profile = () => {
         return res.json();
       })
       .then((mes) => {
-        console.log(mes.playlist);
         return setPlaylist(mes.playlist);
       });
   }, []);
+
+  const openPlaylist = (idplaylist) => {
+    history.push('/playlist');
+  };
 
   return (
     <div>
@@ -33,15 +38,17 @@ const Profile = () => {
         <br />
         <h4>Listes de mes playlists</h4>
         {playlist?.map((playlist) => (
-          <Card>
-            <Card.Img variant="top" src={img} />
-            <Card.Body>
-              <Card.Title>{playlist.name}</Card.Title>
-              <Card.Text>{playlist.description}</Card.Text>
-            </Card.Body>
-          </Card>
+          <div>
+            <Card onClick={() => openPlaylist(playlist.id)}>
+              <Card.Img variant="top" src={img} />
+              <Card.Body>
+                <Card.Title>{playlist.name}</Card.Title>
+                <Card.Text>{playlist.description}</Card.Text>
+              </Card.Body>
+            </Card>
+            <br />
+          </div>
         ))}
-        <br />
         <Button variant="warning" href="/newplaylist">
           Ajouter une nouvelle playlist
         </Button>

@@ -10,6 +10,7 @@ import { AuthContext } from './context/auth';
 import Profile from './pages/profile';
 import Player from './pages/player';
 import NewPlaylist from './pages/newPlaylist';
+import Playlist from './pages/playlist';
 
 const App = () => {
   const existingToken = sessionStorage.getItem('token');
@@ -29,6 +30,7 @@ const App = () => {
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/player" component={Player} />
           <PrivateRoute exact path="/newplaylist" component={NewPlaylist} />
+          <PrivateRoute exact path="/playlist" component={Playlist} />
         </Switch>
       </Router>
     </AuthContext.Provider>

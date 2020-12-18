@@ -4,11 +4,12 @@ import ReactPlayer from 'react-player';
 
 const Player = () => {
   const [show, setShow] = useState(false);
-  const [choice, setChoice] = useState('');
+  const [choice, setChoice] = useState([]);
+  const [value, setValue] = useState('');
 
-  const handleInputChoiceChange = (event) => {
+  const handleInputValueChange = (event) => {
     const { value } = event.target;
-    setChoice(value);
+    setValue(value);
   };
 
   const handleClose = () => setShow(false);
@@ -30,11 +31,30 @@ const Player = () => {
       })
       .then((mes) => {
         console.log(mes.playlist);
+        return setChoice(mes.playlist);
       });
     setShow(true);
   };
-  // Finir l'ajout dans la playlist
-  //const addVideo = () => {};
+
+  const addVideo = () => {
+    let id = '';
+    for (let i = 0; i < choice.length; i++) {
+      if (value === choice[i].name) {
+        id = choice[i].id;
+      }
+    }
+    fetch(`http://localhost:5001/api/playlist/add/${id}`, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ url: sessionStorage.getItem('id') }),
+    }).then((res) => {
+      res.json();
+      setShow(false);
+    });
+  };
 
   return (
     <Container>
@@ -58,17 +78,18 @@ const Player = () => {
                 <Modal.Title>Ajouter la vidéo dans une playlist</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Form.Group controlId="genre">
+                <Form.Group controlId="value">
                   <Form.Label>Choix de la playlist</Form.Label>
                   <Form.Control
                     as="select"
-                    name="choice"
-                    value={choice}
-                    onChange={handleInputChoiceChange}
+                    name="value"
+                    value={value}
+                    onChange={handleInputValueChange}
                   >
-                    <option>Playlist 1</option>
-                    <option>Playlist 2</option>
-                    <option>Playlist 3</option>
+                    <option>Veuillez choisir la playlist !</option>
+                    {choice.map((data) => (
+                      <option>{data.name}</option>
+                    ))}
                   </Form.Control>
                 </Form.Group>
               </Modal.Body>
@@ -76,7 +97,7 @@ const Player = () => {
                 <Button variant="secondary" onClick={handleClose}>
                   Annuler
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={addVideo}>
                   Ajouter
                 </Button>
               </Modal.Footer>
