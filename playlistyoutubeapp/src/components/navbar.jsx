@@ -52,7 +52,7 @@ const NavbarNav = () => {
         Accueil
       </Nav.Link>
       <Nav.Link href="/profile" onClick={reset}>
-        Compte
+        Mes playlists
       </Nav.Link>
     </Nav>
   );

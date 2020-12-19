@@ -30,7 +30,7 @@ const App = () => {
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/player" component={Player} />
           <PrivateRoute exact path="/newplaylist" component={NewPlaylist} />
-          <PrivateRoute exact path="/playlist" component={Playlist} />
+          <PrivateRoute exact path="/profile/playlist" component={Playlist} />
         </Switch>
       </Router>
     </AuthContext.Provider>

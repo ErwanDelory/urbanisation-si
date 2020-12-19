@@ -28,8 +28,22 @@ const Profile = () => {
       });
   }, []);
 
-  const openPlaylist = (idplaylist) => {
-    history.push('/playlist');
+  const openPlaylist = (idPlaylist) => {
+    sessionStorage.setItem('idPlaylist', idPlaylist);
+    history.push('/profile/playlist');
+  };
+
+  const deletePlaylist = (idPlaylist) => {
+    fetch(`http://localhost:5001/api/playlist/delete/${idPlaylist}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    }).then((res) => {
+      res.json();
+      window.location.reload();
+    });
   };
 
   return (
@@ -39,11 +53,23 @@ const Profile = () => {
         <h4>Listes de mes playlists</h4>
         {playlist?.map((playlist) => (
           <div>
-            <Card onClick={() => openPlaylist(playlist.id)}>
+            <Card>
               <Card.Img variant="top" src={img} />
               <Card.Body>
                 <Card.Title>{playlist.name}</Card.Title>
                 <Card.Text>{playlist.description}</Card.Text>
+                <Button
+                  variant="success"
+                  onClick={() => openPlaylist(playlist.id)}
+                >
+                  Ouvrir
+                </Button>{' '}
+                <Button
+                  variant="danger"
+                  onClick={() => deletePlaylist(playlist.id)}
+                >
+                  Supprimer
+                </Button>
               </Card.Body>
             </Card>
             <br />
