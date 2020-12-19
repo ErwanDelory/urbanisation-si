@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Playlist = require("../model/playlist");
-const playlist = require("../model/playlist");
 /*
     const playlistSchema = new mongoose.Schema({
         name: { type: String, required: true },
@@ -133,7 +132,6 @@ async function createPlaylist(req, res, next) {
 			dislike: 0,
 		},
 	});
-	console.log("fzedfesfesf");
 	try {
 		await createdPlaylist.save();
 	} catch (err) {
