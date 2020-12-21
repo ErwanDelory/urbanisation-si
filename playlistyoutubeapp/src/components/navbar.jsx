@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import AuthenticationService from '../services/authentication-service';
-import { Nav, Navbar } from 'react-bootstrap/';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { Badge, Nav, Navbar } from 'react-bootstrap/';
+
+// Modifier la gestion du compte Admin afin de mieux gérer la sécurité
+// Passer par des props dans les fonctions ?
 
 class NavbarLogout extends Component {
   render() {
@@ -29,12 +30,10 @@ class NavbarLogin extends Component {
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text style={{ color: 'white' }}>
           {this.state.nom} {this.state.prenom}{' '}
+          <Badge variant="info">{sessionStorage.getItem('role')}</Badge> |&nbsp;
         </Navbar.Text>
         <Navbar.Text onClick={this.logout}>
-          <a href="/login">
-            <FontAwesomeIcon className="bckg-icon" icon={faSignOutAlt} />{' '}
-            Déconnexion
-          </a>
+          <a href="/login">Déconnexion</a>
         </Navbar.Text>
       </Navbar.Collapse>
     );
@@ -54,6 +53,11 @@ const NavbarNav = () => {
       <Nav.Link href="/profile" onClick={reset}>
         Mes playlists
       </Nav.Link>
+      {sessionStorage.getItem('role') === 'admin' && (
+        <Nav.Link href="/administrator" onClick={reset}>
+          Administrateur
+        </Nav.Link>
+      )}
     </Nav>
   );
 };
