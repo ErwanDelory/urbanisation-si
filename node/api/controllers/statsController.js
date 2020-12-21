@@ -1,7 +1,8 @@
 const db = require('../../mysqlConnect');
 
 function getCountry(req, res, next) {
-  let q = 'SELECT pays, COUNT(pays) FROM users GROUP BY pays';
+  let q =
+    'SELECT pays, COUNT(pays) as nombre FROM users GROUP BY pays ORDER BY nombre DESC LIMIT 5';
   db.query(q, (err, result) => {
     if (err) {
       return next(new Error('Error, query', 404));
@@ -36,7 +37,7 @@ function getAge(req, res, next) {
 }
 
 function getSex(req, res, next) {
-  let q = 'SELECT genre, COUNT(genre) FROM users GROUP BY genre';
+  let q = 'SELECT genre, COUNT(genre) as nombre FROM users GROUP BY genre';
   db.query(q, (err, result) => {
     if (err) {
       return next(new Error('Error, query', 404));
@@ -50,7 +51,8 @@ function getSex(req, res, next) {
 }
 
 function getJob(req, res, next) {
-  let q = 'SELECT job, COUNT(job) FROM users GROUP BY job';
+  let q =
+    'SELECT job, COUNT(job) as nombre FROM users GROUP BY job ORDER BY nombre DESC LIMIT 5';
   db.query(q, (err, result) => {
     if (err) {
       return next(new Error('Error, query', 404));

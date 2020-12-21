@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
-import { VictoryPie } from 'victory';
+import { VictoryBar, VictoryChart, VictoryLabel, VictoryPie } from 'victory';
 
 const Admin = () => {
   const [age, setAge] = useState('');
@@ -38,7 +38,7 @@ const Admin = () => {
       })
       .then((mes) => {
         console.log(mes.data);
-        return setCountry(mes.data[0]);
+        return setCountry(mes.data);
       });
 
     fetch('http://localhost:5000/api/stats/sex', {
@@ -54,7 +54,7 @@ const Admin = () => {
       })
       .then((mes) => {
         console.log(mes.data);
-        return setSex(mes.data[0]);
+        return setSex(mes.data);
       });
 
     fetch('http://localhost:5000/api/stats/job', {
@@ -70,7 +70,7 @@ const Admin = () => {
       })
       .then((mes) => {
         console.log(mes.data);
-        return setJob(mes.data[0]);
+        return setJob(mes.data);
       });
   }, []);
 
@@ -89,8 +89,52 @@ const Admin = () => {
           { x: '65-74', y: age.entre6574 },
           { x: '+75', y: age.plus75 },
         ]}
+        colorScale={'qualitative'}
         width={1000}
       />
+      <h4>Répartition des utilisateurs par sexe</h4>
+      <VictoryPie
+        data={[
+          { x: 'Homme', y: sex[0]?.nombre },
+          { x: 'Femme', y: sex[1]?.nombre },
+        ]}
+        startAngle={90}
+        endAngle={-90}
+        colorScale={'qualitative'}
+        width={1000}
+      />
+
+      <h4>Réparition des 5 métiers les plus présent sur la plateforme</h4>
+      <VictoryChart domainPadding={70}>
+        <VictoryBar
+          style={{ data: { fill: '#c43a31' }, tickLabels: { angle: 90 } }}
+          data={[
+            { x: job[0]?.job, y: job[0]?.nombre },
+            { x: job[1]?.job, y: job[1]?.nombre },
+            { x: job[2]?.job, y: job[2]?.nombre },
+            { x: job[3]?.job, y: job[3]?.nombre },
+            { x: job[4]?.job, y: job[4]?.nombre },
+          ]}
+          width={1000}
+          labelPlacement="vertical"
+        />
+      </VictoryChart>
+
+      <h4>Réparition des 5 pays les plus présent sur la plateforme</h4>
+      <VictoryChart domainPadding={70}>
+        <VictoryBar
+          style={{ data: { fill: '#c43a31' }, tickLabels: { angle: 90 } }}
+          data={[
+            { x: country[0]?.pays, y: country[0]?.nombre },
+            { x: country[1]?.pays, y: country[1]?.nombre },
+            { x: country[2]?.pays, y: country[2]?.nombre },
+            { x: country[3]?.pays, y: country[3]?.nombre },
+            { x: country[4]?.pays, y: country[4]?.nombre },
+          ]}
+          width={1000}
+          labelPlacement="vertical"
+        />
+      </VictoryChart>
     </Container>
   );
 };
