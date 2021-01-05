@@ -51,6 +51,7 @@ const Login = () => {
           sessionStorage.setItem('userid', data.id);
           sessionStorage.setItem('nom', data.nom);
           sessionStorage.setItem('prenom', data.prenom);
+          sessionStorage.setItem('role', data.role);
           sessionStorage.setItem('isAuthenticated', isAuthenticated);
           setAuthTokens(data);
           history.push('/');

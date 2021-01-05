@@ -11,6 +11,7 @@ import Profile from './pages/profile';
 import Player from './pages/player';
 import NewPlaylist from './pages/newPlaylist';
 import Playlist from './pages/playlist';
+import Admin from './pages/admin';
 
 const App = () => {
   const existingToken = sessionStorage.getItem('token');
@@ -31,6 +32,9 @@ const App = () => {
           <PrivateRoute exact path="/player" component={Player} />
           <PrivateRoute exact path="/newplaylist" component={NewPlaylist} />
           <PrivateRoute exact path="/profile/playlist" component={Playlist} />
+          {sessionStorage.getItem('role') === 'admin' && (
+            <PrivateRoute exact path="/administrator" component={Admin} />
+          )}
         </Switch>
       </Router>
     </AuthContext.Provider>
