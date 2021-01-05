@@ -5,6 +5,7 @@ function register(req, res) {
 	let age = parseInt(req.body.age, 10);
 	if (
 		!req.body.genre ||
+		(req.body.genre != "Male" && req.body.genre != "Female") ||
 		!req.body.nom ||
 		!req.body.prenom ||
 		!req.body.email ||

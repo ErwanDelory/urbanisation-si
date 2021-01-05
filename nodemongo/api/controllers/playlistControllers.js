@@ -27,12 +27,9 @@ async function addVideoPlaylist(req, res, next) {
 		playlist.urls.push(url);
 		playlist = await playlist.save();
 	} catch (err) {
-		return next(
-			new Error("Something went wrong, could not find this playlist", 404)
-		);
-	}
-	if (!playlist) {
-		return next(new Error("Error, Playlist not found", 404));
+		return res.status(404).json({
+			message: "Could not find this playlist",
+		});
 	}
 	res.json({ playlist: playlist.toObject({ getters: true }) });
 }
@@ -44,20 +41,24 @@ async function rmVideoPlaylist(req, res, next) {
 	try {
 		playlist = await Playlist.findById(playlistId);
 	} catch (err) {
-		return next(new Error("Error, Playlist not found", 404));
+		return res.status(404).json({
+			message: "Playlist not fount",
+		});
 	}
 
 	index = playlist.urls.indexOf(url);
 	if (index === -1) {
-		return next(new Error("Url not in the playlist", 404));
+		return res.status(404).json({
+			message: "Url not fount",
+		});
 	}
 	playlist.urls.splice(index, 1);
 	try {
 		playlist = await playlist.save();
 	} catch (err) {
-		return next(
-			new Error("Something went wrong, could not save change", 404)
-		);
+		return res.status(406).json({
+			message: "Err could not save",
+		});
 	}
 	res.json({ playlist: playlist.toObject({ getters: true }) });
 }
@@ -70,16 +71,12 @@ async function deletePlaylist(req, res, next) {
 	let playlist;
 	try {
 		playlist = await Playlist.findOneAndRemove({ _id: playlistId });
-		console.log(playlist);
+		res.json({ playlist: playlist.toObject({ getters: true }) });
 	} catch (err) {
-		return next(
-			new Error("Something went wrong, could not find this playlist", 404)
-		);
+		return res.status(404).json({
+			message: "Playlist not found",
+		});
 	}
-	if (!playlist) {
-		return next(new Error("Error, Playlist not found", 404));
-	}
-	res.json({ playlist: playlist.toObject({ getters: true }) });
 }
 
 async function getPlaylistById(req, res, next) {
@@ -87,29 +84,29 @@ async function getPlaylistById(req, res, next) {
 	const playlistId = req.params.pid;
 	try {
 		playlist = await Playlist.findById(playlistId);
+		res.json({ playlist: playlist.toObject({ getters: true }) });
 	} catch (err) {
-		return next(
-			new Error("Something went wrong, could not find this playlist", 404)
-		);
+		return res.status(404).json({
+			message: "Playlist not found",
+		});
 	}
-	if (!playlist) {
-		return next(new Error("Error, Playlist not found", 404));
-	}
-	res.json({ playlist: playlist.toObject({ getters: true }) });
 }
 
 async function getPlaylistByCreator(req, res, next) {
 	const userId = req.params.uid;
-	if (userId === "") {
-		return next(new Error("Error, no userId", 404));
-	}
 	let playlist;
 	try {
 		playlist = await Playlist.find({ "info.creator": userId });
 	} catch (err) {
-		return next(new Error("Something went wrong, could not find", 404));
+		return res.status(406).json({
+			message: "Something went wrong",
+		});
 	}
-
+	if (playlist.length === 0) {
+		return res.status(404).json({
+			message: "User not found",
+		});
+	}
 	res.json({
 		playlist: playlist.map((playlist) =>
 			playlist.toObject({ getters: true })
@@ -120,25 +117,26 @@ async function getPlaylistByCreator(req, res, next) {
 async function createPlaylist(req, res, next) {
 	const { name, description, urls, info } = req.body;
 	const creator = info.creator;
-
-	const createdPlaylist = new Playlist({
-		name,
-		description,
-		urls,
-		info: {
-			creator,
-			urls: null,
-			like: 0,
-			dislike: 0,
-		},
-	});
 	try {
+		const createdPlaylist = new Playlist({
+			name,
+			description,
+			urls,
+			info: {
+				creator,
+				urls: null,
+				like: 0,
+				dislike: 0,
+			},
+		});
+
 		await createdPlaylist.save();
+		res.status(201).json({ playlist: createdPlaylist });
 	} catch (err) {
-		console.log("Created Playlist Fail  " + err);
-		return next(err);
+		return res.status(403).json({
+			message: "Created Playlist Failed",
+		});
 	}
-	res.status(201).json({ playlist: createdPlaylist });
 }
 
 exports.dislikePlaylist = dislikePlaylist;
