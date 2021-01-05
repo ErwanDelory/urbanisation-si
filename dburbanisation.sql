@@ -4998,7 +4998,7 @@ INSERT INTO `users` (`id`, `genre`, `nom`, `prenom`, `email`, `age`, `pays`, `jo
 (4998, 'Female', 'Leclercq', 'Isabella', 'Warren_Morin@yahoo.fr', 52, 'Hong Kong', 'Assistant', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (4999, 'Female', 'Menard', 'Amani', 'Alda_Meunier@gmail.com', 24, 'Argentina', 'Technicien', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
 (5000, 'Female', 'Charpentier', 'Libby', 'Myrtle_Menard@gmail.com', 48, 'Timor-Leste', 'Executif', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users'),
-(5001, 'Male', 'root', 'root', 'root@root.fr', 15, 'root', 'root', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'users');
+(5001, 'Male', 'root', 'root', 'root@root.fr', 15, 'root', 'root', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'admin');
 
 --
 -- Index pour les tables déchargées
