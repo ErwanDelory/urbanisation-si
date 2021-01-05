@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
-import { VictoryBar, VictoryChart, VictoryLabel, VictoryPie } from 'victory';
+import { VictoryBar, VictoryChart, VictoryPie } from 'victory';
 
 const Admin = () => {
   const [age, setAge] = useState('');
